@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  coverage:
+    runs-on: windows-latest
+
+    env:
+      Actions_Allow_Unsecure_Commands: true
+      Solution_Path: DavesSystemTuner.sln
+      # app project
+      Wpf_Project_Path: DavesSystemTuner\DaveSystemTuner.csproj
+      # packaging app project
+      Wap_Project_Directory: DavesSystemTunerPackaging
+      Wap_Project_Name: DavesSystemTunerPackaging.Package.wapproj
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Restore WPF App
+        run: msbuild $env:Solution_Path /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
