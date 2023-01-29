@@ -6,7 +6,7 @@ on:
     - master
 
 jobs:
-  coverage:
+  ci:
     runs-on: windows-latest
 
     env:
