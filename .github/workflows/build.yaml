@@ -12,11 +12,6 @@ jobs:
     env:
       Actions_Allow_Unsecure_Commands: true
       Solution_Path: DavesSystemTuner.sln
-      # app project
-      Wpf_Project_Path: DavesSystemTuner\DaveSystemTuner.csproj
-      # packaging app project
-      Wap_Project_Directory: DavesSystemTunerPackaging
-      Wap_Project_Name: DavesSystemTunerPackaging.Package.wapproj
 
     steps:
       - name: Checkout
@@ -29,8 +24,13 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: Setup MSBuild.exe
-        uses: microsoft/setup-msbuild@v1.1
+      #- name: Setup MSBuild.exe
+      #  uses: microsoft/setup-msbuild@v1.1
 
-      - name: Restore WPF App
-        run: msbuild $env:Solution_Path /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
+      #- name: Restore WPF App
+      #  run: msbuild $env:Solution_Path /t:Restore /p:Configuration=Debug /p:RuntimeIdentifier=win-x86
+      - name: Restore dependencies
+        run: dotnet restore $env:Solution_Path
+
+      - name: Build application for release
+        run: dotnet build $env:Solution_Path --configuration Release --no-restore
