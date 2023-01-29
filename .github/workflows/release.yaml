@@ -35,7 +35,7 @@ jobs:
         run: dotnet build $env:App_Project_Path --configuration Release --no-restore
 
       - name: Publish application using FolderProfile config
-        run: dotnet publish $env:App_Project_Path -p:PublishProfile=FolderProfile --no-restore --no-build
+        run: dotnet publish $env:App_Project_Path -c Release -p:PublishProfile=FolderProfile --no-restore --no-build
 
       - name: Install NSIS
         run: |
