@@ -24,12 +24,11 @@
                     <Label Content="{Binding ModsPending}" HorizontalAlignment="Left" Margin="367,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.304,-1.499"/>
                     <Label Content="Mods Applied:" HorizontalAlignment="Left" Margin="278,180,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.925" Width="89"/>
                     <Label Content="{Binding ModsApplied}" HorizontalAlignment="Left" Margin="367,180,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-0.074"/>
-
                 </Grid>
             </TabItem>
-            <TabItem Header="Registry Mods">
+            <TabItem Header="Registry Mods" Height="20" VerticalAlignment="Top">
                 <Grid Height="389">
-                    <DataGrid ItemsSource="{Binding Mods}"  Margin="10,10,10,0" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" Height="276" VerticalAlignment="Top">
+                    <DataGrid ItemsSource="{Binding Mods}" SelectedItem="{Binding SelectedMod}"  Margin="10,10,10,0" FontSize="14" AutoGenerateColumns="False" CanUserAddRows="False" Height="260" VerticalAlignment="Top">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding IsEnabled}" />
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
@@ -37,6 +36,20 @@
                             <DataGridTextColumn Header="IsApplied" Binding="{Binding IsApplied}" IsReadOnly="True" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <GroupBox x:Name="groupBox" Header="Selected Mod Details" Margin="10,275,10,10">
+                        <Grid>
+                            <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.121,-0.225" Margin="10,0,0,0"/>
+                            <Label Content="{Binding SelectedMod.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="659" RenderTransformOrigin="0.121,-0.225" Margin="73,0,0,0"/>
+                            
+                            <Label Content="Key Path:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.121,-0.225" Margin="10,23,0,0"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Top" Width="659" RenderTransformOrigin="0.121,-0.225" Margin="73,23,0,0">
+                                <TextBlock Text="{Binding SelectedMod.KeyPath}"/>
+                            </Label>
+
+                            <Label Content="Key Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.121,-0.225" Margin="10,48,0,0"/>
+                            <Label Content="{Binding SelectedMod.KeyName}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="659" RenderTransformOrigin="0.121,-0.225" Margin="73,48,0,0"/>
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>

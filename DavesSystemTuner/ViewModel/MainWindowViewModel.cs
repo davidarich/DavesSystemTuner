@@ -100,6 +100,20 @@ namespace DavesSystemTuner.ViewModel
                 }
             }
         }
+
+        private RegistryMod? _selectedMod;
+        public RegistryMod? SelectedMod
+        {
+            get { return _selectedMod; }
+            set
+            {
+                if (_selectedMod != value)
+                {
+                    _selectedMod = value;
+                    NotifyPropertyChanged(nameof(SelectedMod));
+                }
+            }
+        }
         #endregion
 
         #region Overview Tab - Command Bindings
