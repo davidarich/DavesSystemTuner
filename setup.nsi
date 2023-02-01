@@ -47,7 +47,6 @@ Section "MainSection" SEC01
   File "${PUBLISH_OUTPUT_DIR}\GroupControls.dll"
   File "${PUBLISH_OUTPUT_DIR}\Microsoft.Win32.TaskScheduler.dll"
   File "${PUBLISH_OUTPUT_DIR}\Microsoft.Win32.TaskSchedulerEditor.dll"
-  File "${PUBLISH_OUTPUT_DIR}\Microsoft.Windows.SDK.NET.dll"
   File "${PUBLISH_OUTPUT_DIR}\TimeSpan2.Core.dll"
   File "${PUBLISH_OUTPUT_DIR}\TimeSpan2.dll"
 
@@ -88,7 +87,6 @@ Section Uninstall
   Delete "$INSTDIR\GroupControls.dll"
   Delete "$INSTDIR\Microsoft.Win32.TaskScheduler.dll"
   Delete "$INSTDIR\Microsoft.Win32.TaskSchedulerEditor.dll"
-  Delete "$INSTDIR\Microsoft.Windows.SDK.NET.dll"
   Delete "$INSTDIR\TimeSpan2.Core.dll"
   Delete "$INSTDIR\TimeSpan2.dll"
   ; uninstaller, don't remove
