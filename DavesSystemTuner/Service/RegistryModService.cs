@@ -101,8 +101,8 @@ namespace DavesSystemTuner.Service
             // if the registry key didn't exist, there's nothing to do
             if (regKey == null) { return; }
 
-            // if a valid key was found, delete it
-            regKey.DeleteSubKey(registryMod.KeyName);
+            // a valid key was found, delete it
+            regKey.DeleteValue(registryMod.KeyName);
             regKey.Close();
             return;
         }

@@ -40,12 +40,11 @@
                         <Grid>
                             <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.121,-0.225" Margin="10,0,0,0"/>
                             <Label Content="{Binding SelectedMod.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="659" RenderTransformOrigin="0.121,-0.225" Margin="73,0,0,0"/>
-                            
                             <Label Content="Key Path:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" RenderTransformOrigin="0.121,-0.225" Margin="10,23,0,0"/>
                             <Label HorizontalAlignment="Left" VerticalAlignment="Top" Width="659" RenderTransformOrigin="0.121,-0.225" Margin="73,23,0,0">
+                                <!-- TextBlock must be used here because the text includes underscore characters -->
                                 <TextBlock Text="{Binding SelectedMod.KeyPath}"/>
                             </Label>
-
                             <Label Content="Key Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.121,-0.225" Margin="10,48,0,0"/>
                             <Label Content="{Binding SelectedMod.KeyName}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="659" RenderTransformOrigin="0.121,-0.225" Margin="73,48,0,0"/>
                         </Grid>
