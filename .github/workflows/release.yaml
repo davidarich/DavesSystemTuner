@@ -58,6 +58,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: Setup_DavesSystemTuner_${{ RELEASE_VERSION }}.exe
-          tag: ${{ RELEASE_VERSION }}
+          file: Setup_DavesSystemTuner_${{ env.RELEASE_VERSION }}.exe
+          tag: ${{ env.RELEASE_VERSION }}
           body: "Fixed application hang when removing mods"
