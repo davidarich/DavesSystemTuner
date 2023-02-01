@@ -28,11 +28,16 @@ jobs:
 
       - name: Update Version in app.manifest
         run: |
-          [xml] $appManifest = Get-Content ".\DavesSystemTuner\app.manifest"
+          $file = ".\DavesSystemTuner\app.manifest"
+          $appManifest = New-Object xml
+          $appManifest.PreserveWhitespace = $true
+          $appManifest.Load($file)
+          echo "Original:"
           echo $appManifest.assembly.assemblyIdentity.version
           $appManifest.assembly.assemblyIdentity.version = $env:RELEASE_VERSION
+          echo "Updated:"
           echo $appManifest.assembly.assemblyIdentity.version
-          $appManifest.Save(".\DavesSystemTuner\app.manifest")
+          $appManifest.Save($file)
 
       - name: Build Project for Release
         run: dotnet build $env:App_Project_Path --configuration Release --no-restore
