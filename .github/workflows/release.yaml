@@ -12,7 +12,7 @@ jobs:
     env:
       Actions_Allow_Unsecure_Commands: true
       App_Project_Path: DavesSystemTuner\DavesSystemTuner.csproj
-      RELEASE_VERSION: ${{ github.ref }}
+      RELEASE_VERSION: ${{ github.ref_name }}
 
     steps:
       - name: Checkout
