@@ -1,6 +1,9 @@
 name: Release
 
 on:
+  push:
+    tags:
+     - '*'
   workflow_dispatch:
     branches:
     - main
@@ -45,5 +48,10 @@ jobs:
       - name: Package Application with Installer
         run: makensis setup.nsi
 
-      #- name: Upload Artifacts
-        
+      - name: Upload Installation Binary to GitHub Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: Setup_DavesSystemTuner_1.0.0.exe
+          tag: ${{ github.ref }}
+          body: Initial Release
