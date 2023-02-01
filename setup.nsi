@@ -2,7 +2,7 @@
 ; Adapted from https://gist.github.com/zmilojko/3174804
 
 !define PRODUCT_NAME "DavesSystemTuner"
-!define PRODUCT_VERSION "1.0.0"
+!define PRODUCT_VERSION "$%RELEASE_VERSION%"
 !define PRODUCT_PUBLISHER "Dave Rich"
 !define PRODUCT_WEB_SITE "https://github.com/davidarich/davessystemtuner"
 
