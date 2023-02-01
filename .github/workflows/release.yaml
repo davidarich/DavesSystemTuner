@@ -29,12 +29,15 @@ jobs:
       - name: Update Version in app.manifest
         run: |
           $file = ".\DavesSystemTuner\app.manifest"
+          $newVersion = $env:RELEASE_VERSION
+          # remove leading "v" and append ".0" to match required format like x.x.x.x
+          $newVersion = $newVersion.Remove(0,1) + ".0"
           $appManifest = New-Object xml
           $appManifest.PreserveWhitespace = $true
           $appManifest.Load($file)
           echo "Original:"
           echo $appManifest.assembly.assemblyIdentity.version
-          $appManifest.assembly.assemblyIdentity.version = $env:RELEASE_VERSION
+          $appManifest.assembly.assemblyIdentity.version = $newVersion
           echo "Updated:"
           echo $appManifest.assembly.assemblyIdentity.version
           $appManifest.Save($file)
